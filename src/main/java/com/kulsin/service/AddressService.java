@@ -9,7 +9,7 @@ import java.util.Random;
 @Service
 public class AddressService {
 
-    @Cacheable(value = "addressCache")
+    @Cacheable(value = "addressCache", unless = "#customerId < 1000")
     public Address getAddress(long customerId) {
         return new Address(
                 randomString(),
